@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using WebApp.DataGenerator;
 
 namespace WebApp.Controllers
 {
@@ -7,6 +7,7 @@ namespace WebApp.Controllers
 	{
 		public IActionResult Index()
 		{
+			var patient = PatientGenerator.Create();
 			return View();
 		}
 	}
