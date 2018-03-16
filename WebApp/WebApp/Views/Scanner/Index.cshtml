@@ -1,7 +1,20 @@
-﻿
-@{
-    ViewData["Title"] = "Index";
+﻿@section CSSHead {
+	<environment include="Development">
+		<link rel="stylesheet" href="~/css/scanner.css" />
+	</environment>
+	<environment exclude="Development">
+		<link rel="stylesheet" href="~/css/scanner.min.css" asp-append-version="true" />
+	</environment>
 }
 
-<h2>Index</h2>
+@section ScriptsHead {
 
+}
+
+@section Scripts {
+	<script src="~/js/scanner.js" asp-append-version="true"></script>
+}
+
+<section id="human-body" class="scanning">
+	<span id="human-body-light"></span>
+</section>

@@ -1,0 +1,10 @@
+﻿[
+  {
+    "outputFile": "wwwroot/css/scanner.css",
+    "inputFile": "wwwroot/css/scanner.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/common.css",
+    "inputFile": "wwwroot/css/common.scss"
+  }
+]
