@@ -10,7 +10,8 @@ namespace WebApp.DataGenerator
 		{
 			return new Faker<Patient>("fr")
 				.RuleFor(p => p.Name, f => f.Person.FirstName)
-				.RuleFor(p=>p.Gender , f=>f.PickRandom<Gender>())
+				.RuleFor(p => p.Gender, f => f.PickRandom<Gender>())
+				.RuleFor(p => p.Photo, f => f.Image.People(640, 480, true))
 				.Generate(5);
 		}
 	}

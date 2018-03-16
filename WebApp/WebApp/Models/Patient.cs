@@ -6,6 +6,7 @@ namespace WebApp.Models
 	{
 		public string Name { get; set; }
 		public Gender Gender { get; set; }
+		public string Photo { get; set; }
 		public MedicalConsultation Consultation { get; set; }
 	}
 }
