@@ -1,46 +1,41 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebApp.Controllers
 {
     [Produces("application/json")]
-    [Route("api/DataCollector")]
+    [Route("api")]
     public class DataCollectorController : Controller
     {
-        // GET: api/DataCollector
-        [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
-
-        // GET: api/DataCollector/5
-        [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
-        {
-            return "value";
-        }
-        
-        // POST: api/DataCollector
+		// api/temperature/
+		[Route("temperature")]
         [HttpPost]
-        public void Post([FromBody]string value)
-        {
-        }
-        
-        // PUT: api/DataCollector/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-        
-        // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
+        public HttpResponseMessage Temperature(double value)
+		{
+			return new HttpResponseMessage(HttpStatusCode.OK);
+		}
+
+		// api/Heartbeat/
+		[Route("heartbeat")]
+	    [HttpPost]
+	    public HttpResponseMessage Heartbeat(double value)
+	    {
+		    return new HttpResponseMessage(HttpStatusCode.OK);
+	    }
+
+	    // api/bloodoxgyneation
+	    [Route("bloodoxygenation")]
+	    [HttpPost]
+	    public HttpResponseMessage BloodOxygenation(double value)
+	    {
+		    return new HttpResponseMessage(HttpStatusCode.OK);
+	    }
     }
 }
