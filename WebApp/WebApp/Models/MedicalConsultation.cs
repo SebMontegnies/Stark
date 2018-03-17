@@ -7,7 +7,6 @@ namespace WebApp.Models
 {
 	public class MedicalConsultation
 	{
-		public int Age { get; set; }
 		public double Weight { get; set; }
 		public double Temperature { get; set; }
 		public int Heartbeat { get; set; }

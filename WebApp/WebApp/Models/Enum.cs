@@ -7,7 +7,7 @@ namespace WebApp.Models
 {
 	public enum Gender
 	{
-		Man,
-		Woman
+		Male,
+		Female
 	}
 }
