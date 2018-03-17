@@ -1,17 +1,19 @@
 ﻿@model List<Patient>
 @{
-	ViewData["Title"] = "Home Page";
+	ViewData["Title"] = "Index";
 }
 
 
 <div class="row">
 	@foreach (var item in Model)
 	{
-		<div class="col-md-6">
+		<div class="col-md-3">
+			<a href="@Url.Action("GeneralInformation")">
 			<p>
 				@item.Name
 			</p>
-			<img src="@item.Photo" />
+			<img src="@item.Photo" max-width="200px" width="200px"/>
+			</a>
 		</div>
 	}
 </div>
