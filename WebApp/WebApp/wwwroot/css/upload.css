@@ -12,6 +12,15 @@
   height: 500px;
   width: 55%; }
 
+#questions .title {
+  display: block;
+  height: 60px;
+  color: #fff;
+  font-size: 45px;
+  font-weight: 500;
+  line-height: 50px;
+  cursor: pointer; }
+
 #questions .question {
   padding: 50px 0;
   border-bottom: 1px solid rgba(255, 255, 255, 0.4); }
@@ -96,11 +105,18 @@
   font-weight: 500;
   line-height: 42px; }
 
-#files-list .file .file-name {
-  color: rgba(0, 0, 0, 0.4);
-  font-size: 24px;
+#files-list > img {
+  margin: 30px 0; }
+
+#files-list > .symptom {
+  display: block;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 35px;
   font-weight: 500;
-  line-height: 28px; }
+  line-height: 40px; }
+
+#files-list > .symptom strong {
+  color: rgba(0, 0, 0, 0.75); }
 
 #human-body-man,
 #human-body-woman {

@@ -1,10 +1,8 @@
 ﻿var video = document.querySelector("#human-video-stream");
 navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia || navigator.oGetUserMedia;
 
-if (navigator.getUserMedia) {
+if (navigator.getUserMedia)
 	navigator.getUserMedia({ video: true, audio: false }, handleVideo, videoError);
-	$('#human-video-stream-container').fadeIn();
-}
 
 function startCaptureCountdown() {
 	var timerDefault = 5;
@@ -33,6 +31,50 @@ function videoError(e) {
 	console.log(e);
 }
 
+function getSensors() {
+	$.ajax({
+		type: "GET",
+		url: "http://diseaseit.azurewebsites.net/api/health/",
+		success: function (healthResult) {
+			var temp = parseFloat(healthResult.temperature).toFixed(2);
+			$('#sensors-informations').append('<div class="temperature">' + temp + ' °C</div>');
+
+			$('input[name="temperature"]').val(temp);
+
+			$('#sensors-informations').append('<div class="heart-rate">' + healthResult.hearbeat + ' BPM</div>');
+			$('input[name="hearbeat"]').val(healthResult.hearbeat);
+
+			var bloodOx = parseFloat(healthResult.bloodoxygenationRate).toFixed(2);
+			$('#sensors-informations').append('<div class="spo2">' + bloodOx + ' %</div>');
+			$('input[name="bloodoxygenationRate"]').val(bloodOx);
+		}
+	});
+}
+
+function refreshSensors() {
+	$.ajax({
+		type: "GET",
+		url: "http://diseaseit.azurewebsites.net/api/health/",
+		success: function (healthResult) {
+			var temp = parseFloat(healthResult.temperature).toFixed(2);
+			$('#sensors-informations .temperature').text(temp + ' °C');
+			$('input[name="temperature"]').val(temp);
+
+			$('#sensors-informations .heart-rate').text(healthResult.hearbeat + ' BPM');
+			$('input[name="hearbeat"]').val(healthResult.hearbeat);
+
+			var bloodOx = parseFloat(healthResult.bloodoxygenationRate).toFixed(2);
+			$('#sensors-informations .spo2').text(bloodOx + ' %');
+			$('input[name="bloodoxygenationRate"]').val(bloodOx);
+
+			if (healthResult.temperature == 0 && healthResult.hearbeat == 0 && healthResult.bloodoxygenationRate == 0)
+				$('#sensors-error').show();
+			else
+				$('#sensors-error').hide();
+		}
+	});
+}
+
 function snapshot() {
 	var canvas = document.getElementById("human-capture-canvas");
 	var ctx = canvas.getContext('2d');
@@ -41,10 +83,9 @@ function snapshot() {
 
 	$.ajax({
 		type: "POST",
-		url: "http://localhost:8000/api/FaceRecognition",
+		url: "http://diseaseit.azurewebsites.net/api/FaceRecognition",
 		data: { data: imageData },
 		success: function (result) {
-
 			$('#human-video-stream-container').fadeOut(250);
 			$('#human-body-light').addClass('scanning');
 
@@ -67,36 +108,6 @@ function snapshot() {
 			}, 3000);
 			$('input[name="age"]').val(result.age);
 
-			$.ajax({
-				type: "GET",
-				url: "http://diseaseit.azurewebsites.net/api/health/",
-				success: function (healthResult) {
-					console.log(healthResult);
-					gg = healthResult;
-					setTimeout(function () {
-						var temp = parseFloat(healthResult.temperature).toFixed(2);
-						$('#sensors-informations').append('<div class="temperature">' + temp + ' °C</div>');
-
-						$('input[name="temperature"]').val(temp);
-					}, 1500);
-			
-
-					setTimeout(function () {
-						$('#sensors-informations').append('<div class="heart-rate">' + healthResult.hearbeat + ' BPM</div>');
-						$('input[name="hearbeat"]').val(healthResult.hearbeat);
-					}, 3000);
-			
-
-					setTimeout(function () {
-						var bloodOx = parseFloat(healthResult.bloodoxygenationRate).toFixed(2);
-						$('#sensors-informations').append('<div class="spo2">' + bloodOx + ' %</div>');
-						$('input[name="bloodoxygenationRate"]').val(bloodOx);
-					}, 4500);
-				
-				
-				}
-			});
-
 			setTimeout(function () {
 				$('#human-body-light').removeClass('scanning');
 				$('#next-button').fadeIn();
@@ -109,25 +120,21 @@ function snapshot() {
 $(function () {
 
 	$.ajax({
-		type: "POST",
+		type: "GET",
 		url: "http://diseaseit.azurewebsites.net/api/active",
-		data: {enable:true},
+		data: { enable: true },
 		success: function (activeResult) {
 			console.log(activeResult);
 		}
+	});
+
+	getSensors();
+	setInterval(function () {
+		refreshSensors();
+	}, 1000);
+
+	$('#human-video-button').click(function () {
+		$('#human-video-stream-container').fadeIn();
 	});
 
 });
-
-function closeCapteur()
-{
-	$.ajax({
-		type: "POST",
-		url: "http://diseaseit.azurewebsites.net/api/active",
-		data: { enable: false },
-		success: function (activeResult) {
-			console.log(activeResult);
-		}
-	});
-	return true;
-}

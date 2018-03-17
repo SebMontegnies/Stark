@@ -4,6 +4,27 @@
   left: 55px;
   z-index: 1; }
 
+#sensors-error {
+  display: none;
+  position: absolute;
+  top: 50%;
+  right: 55px;
+  transform: tranlateY(-50%);
+  height: auto;
+  width: 300px;
+  z-index: 1;
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 30px;
+  line-height: 35px;
+  text-align: center; }
+
+#sensors-error svg {
+  height: 50px;
+  width: auto; }
+
+#sensors-error svg path {
+  fill: rgba(0, 0, 0, 0.5); }
+
 #sensors-informations {
   position: absolute;
   top: 55px;
@@ -50,6 +71,32 @@
   background: url("../images/heart-rate-icon.png") no-repeat left center;
   background-size: auto 100%; }
 
+#human-video-button {
+  box-sizing: border-box;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 200px;
+  width: 200px;
+  padding: 25px 20px 20px;
+  background: #fff;
+  border-radius: 100px;
+  box-shadow: 0 3px 7px rgba(0, 0, 0, 0.2);
+  color: #7194ae;
+  font-size: 28px;
+  line-height: 32px;
+  text-align: center;
+  z-index: 1;
+  overflow: hidden; }
+
+#human-video-button svg {
+  height: 45px;
+  width: auto; }
+
+#human-video-button svg path {
+  fill: #7194ae; }
+
 #human-video-stream-container {
   display: none;
   position: absolute;
@@ -93,6 +140,7 @@
   z-index: 1; }
 
 #human-video-stream-loader {
+  display: none;
   position: absolute;
   top: 50%;
   left: 50%;
