@@ -44,7 +44,6 @@ function snapshot() {
 		url: "http://localhost:2921/api/FaceRecognition",
 		data: { data: imageData },
 		success: function (result) {
-			console.log(result);
 
 			$('#human-video-stream-container').fadeOut(250);
 			$('#human-body-light').addClass('scanning');
@@ -69,7 +68,6 @@ function snapshot() {
 				type: "GET",
 				url: "http://diseaseit.azurewebsites.net/api/health/",
 				success: function (healthResult) {
-					console.log(healthResult);
 					setTimeout(function () {
 						$('#sensors-informations').append('<div class="temperature">' + healthResult.temperature + ' °C</div>');
 					}, 1500);

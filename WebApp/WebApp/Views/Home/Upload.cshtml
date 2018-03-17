@@ -33,36 +33,12 @@
 <form>
 	<div id="questions">
 		<div class="question">
-			<label>
-				Does the patient have children ?
+			<label for="file" class="label-file">
+				Upload file
 			</label>
-			<span class="toggle" data-field="children">
-				<span data-value="1">Yes</span>
-				<span class="selected" data-value="0">No</span>
-			</span>
-			<input type="hidden" name="children" value="0" />
-		</div>
-
-		<div class="question">
-			<label>
-				Does the patient practice sport?
-			</label>
-			<span class="toggle" data-field="sport">
-				<span data-value="1">Yes</span>
-				<span class="selected" data-value="0">No</span>
-			</span>
-			<input type="hidden" name="sport" value="0" />
-		</div>
-
-		<div class="question">
-			<label>
-				Does the patient smoke?
-			</label>
-			<span class="toggle" data-field="smoke">
-				<span data-value="1">Yes</span>
-				<span class="selected" data-value="0">No</span>
-			</span>
-			<input type="hidden" name="smoke" value="0" />
+			<input id="file" class="input-file" type="file">
+			<span id="file-name"></span>
+			<div id="file-loader"></div>
 		</div>
 	</div>
 
