@@ -23,7 +23,6 @@ function startCaptureCountdown() {
 function handleVideo(stream) {
 	video.src = window.URL.createObjectURL(stream);
 	webcamStream = stream;
-	startCaptureCountdown();
 }
 
 function videoError(e) {
@@ -85,34 +84,25 @@ function snapshot() {
 		type: "POST",
 		url: "http://diseaseit.azurewebsites.net/api/FaceRecognition",
 		data: { data: imageData },
-		success: function (result) {
+		beforeSend: function () {
 			$('#human-video-stream-container').fadeOut(250);
 			$('#human-body-light').addClass('scanning');
-
+		},
+		success: function (result) {
 			if (result.gender == 0) {
 				$('#human-body-man').show();
-				setTimeout(function () {
-					$('#human-informations').append('<div class="gender man">Man</div>');
-				}, 1500);
+				$('#human-informations').append('<div class="gender man">Man</div>');
 				$('input[name="gender"]').val('0');
 			} else if (result.gender == 1) {
 				$('#human-body-woman').show();
-				setTimeout(function () {
-					$('#human-informations').append('<div class="gender woman">Woman</div>');
-				}, 1500);
+				$('#human-informations').append('<div class="gender woman">Woman</div>');
 				$('input[name="gender"]').val('1');
 			}
 
-			setTimeout(function () {
-				$('#human-informations').append('<div class="age">' + result.age + ' Y</div>');
-			}, 3000);
+			$('#human-informations').append('<div class="age">' + result.age + ' Y</div>');
 			$('input[name="age"]').val(result.age);
 
-			setTimeout(function () {
-				$('#human-body-light').removeClass('scanning');
-				$('#next-button').fadeIn();
-			}, 9500);
-			
+			$('#next-button').fadeIn();
 		}
 	});
 }
@@ -134,7 +124,9 @@ $(function () {
 	}, 1000);
 
 	$('#human-video-button').click(function () {
+		$(this).fadeOut();
 		$('#human-video-stream-container').fadeIn();
+		startCaptureCountdown();
 	});
 
 });
