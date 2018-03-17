@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using WebApp.ViewModels;
 
 namespace WebApp.Controllers
 {
@@ -14,12 +7,39 @@ namespace WebApp.Controllers
 	[Route("api")]
 	public class DataCollectorController : Controller
 	{
-		// api/health/
+		private static double _temperature { get; set; }
+		private static double _hearbeat { get; set; }
+		private static double _bloodoxygenationRate { get; set; }
+		private static bool _isEnable { get; set; }
+
+		// api/health
 		[Route("health")]
 		[HttpPost]
 		public string Health(double temperature, double heartbeat, double bloodoxygenation)
 		{
+			_temperature = temperature;
+			_hearbeat = heartbeat;
+			_bloodoxygenationRate = bloodoxygenation;
 			return temperature + " " + heartbeat + " " + bloodoxygenation;
+		}
+
+		[Route("health")]
+		[HttpGet]
+		public DataViewModel Health()
+		{
+			var model = new DataViewModel();
+			model.BloodoxygenationRate = _bloodoxygenationRate;
+			model.Hearbeat = _hearbeat;
+			model.Temperature = _temperature;
+			return model;
+		}
+
+		// api/active
+		[Route("active")]
+		[HttpGet]
+		public bool Activate()
+		{
+			return true;
 		}
 	}
 }

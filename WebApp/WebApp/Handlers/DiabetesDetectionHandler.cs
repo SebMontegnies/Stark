@@ -13,8 +13,7 @@ namespace WebApp.Handlers
 {
 	public class DiabetesDetectionHandler
 	{
-
-		public static string Diabetes()
+		public static int Diabetes()
 		{
 			using (var client = new HttpClient())
 			{
@@ -33,9 +32,9 @@ namespace WebApp.Handlers
 				}
 
 				var root = JsonConvert.DeserializeObject<Rootobject>(result);
-				var values=root.Results.output1.value.Values.LastOrDefault();
-				var percentage=values.LastOrDefault();
-				return result;
+				var values = root.Results.output1.value.Values.LastOrDefault();
+				var percentage = Double.Parse(values.LastOrDefault());
+				return (int)(percentage * 10);
 			}
 		}
 
