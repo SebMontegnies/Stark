@@ -1,10 +1,8 @@
 ﻿var video = document.querySelector("#human-video-stream");
 navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia || navigator.oGetUserMedia;
 
-if (navigator.getUserMedia) {
+if (navigator.getUserMedia)
 	navigator.getUserMedia({ video: true, audio: false }, handleVideo, videoError);
-	$('#human-video-stream-container').fadeIn();
-}
 
 function startCaptureCountdown() {
 	var timerDefault = 5;
@@ -36,7 +34,7 @@ function videoError(e) {
 function getSensors() {
 	$.ajax({
 		type: "GET",
-		url: "/api/health/",
+		url: "http://diseaseit.azurewebsites.net/api/health/",
 		success: function (healthResult) {
 			var temp = parseFloat(healthResult.temperature).toFixed(2);
 			$('#sensors-informations').append('<div class="temperature">' + temp + ' °C</div>');
@@ -53,6 +51,30 @@ function getSensors() {
 	});
 }
 
+function refreshSensors() {
+	$.ajax({
+		type: "GET",
+		url: "http://diseaseit.azurewebsites.net/api/health/",
+		success: function (healthResult) {
+			var temp = parseFloat(healthResult.temperature).toFixed(2);
+			$('#sensors-informations .temperature').text(temp + ' °C');
+			$('input[name="temperature"]').val(temp);
+
+			$('#sensors-informations .heart-rate').text(healthResult.hearbeat + ' BPM');
+			$('input[name="hearbeat"]').val(healthResult.hearbeat);
+
+			var bloodOx = parseFloat(healthResult.bloodoxygenationRate).toFixed(2);
+			$('#sensors-informations .spo2').text(bloodOx + ' %');
+			$('input[name="bloodoxygenationRate"]').val(bloodOx);
+
+			if (healthResult.temperature == 0 && healthResult.hearbeat == 0 && healthResult.bloodoxygenationRate == 0)
+				$('#sensors-error').show();
+			else
+				$('#sensors-error').hide();
+		}
+	});
+}
+
 function snapshot() {
 	var canvas = document.getElementById("human-capture-canvas");
 	var ctx = canvas.getContext('2d');
@@ -61,10 +83,9 @@ function snapshot() {
 
 	$.ajax({
 		type: "POST",
-		url: "http://localhost:8000/api/FaceRecognition",
+		url: "http://diseaseit.azurewebsites.net/api/FaceRecognition",
 		data: { data: imageData },
 		success: function (result) {
-
 			$('#human-video-stream-container').fadeOut(250);
 			$('#human-body-light').addClass('scanning');
 
@@ -101,14 +122,19 @@ $(function () {
 	$.ajax({
 		type: "GET",
 		url: "http://diseaseit.azurewebsites.net/api/active",
-		data: {},
+		data: { enable: true },
 		success: function (activeResult) {
 			console.log(activeResult);
 		}
 	});
 
+	getSensors();
 	setInterval(function () {
-		getSensors();
+		refreshSensors();
 	}, 1000);
+
+	$('#human-video-button').click(function () {
+		$('#human-video-stream-container').fadeIn();
+	});
 
 });
