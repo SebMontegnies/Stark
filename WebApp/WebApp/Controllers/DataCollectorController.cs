@@ -9,14 +9,14 @@ namespace WebApp.Controllers
 	public class DataCollectorController : Controller
 	{
 		private static double _temperature { get; set; }
-		private static double _hearbeat { get; set; }
-		private static double _bloodoxygenationRate { get; set; }
+		private static int _hearbeat { get; set; }
+		private static int _bloodoxygenationRate { get; set; }
 		private static bool _isEnable { get; set; }
 
 		// api/health
 		[Route("health")]
 		[HttpPost]
-		public string Health(double temperature, double heartbeat, double bloodoxygenation)
+		public string Health(double temperature, int heartbeat, int bloodoxygenation)
 		{
 			_temperature = temperature;
 			_hearbeat = heartbeat;
@@ -52,6 +52,9 @@ namespace WebApp.Controllers
 		[HttpPost]
 		public bool Activate(bool enable)
 		{
+			_temperature = 0.0;
+			_bloodoxygenationRate = 0;
+			_hearbeat = 0;
 			_isEnable = enable;
 			return enable;
 		}
