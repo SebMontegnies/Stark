@@ -19,17 +19,17 @@
 	<script src="~/js/home.js" asp-append-version="true"></script>
 }
 
-<form method="get" action="@Url.Action("Scanner")">
-	<img id="logo" src="~/images/logo.png" height="122" width="404"/>
-	<div id="diagnosis-list">
-		@{
+	<form method="get" action="@Url.Action("Scanner")">
+		<img id="logo" src="~/images/logo.png" height="122" width="404" />
+		<div id="diagnosis-list">
+			@{
 			int i = 1;
 			foreach (var item in Model)
 			{
 				<div class="diagnosis">
 
 					<div class="picture-container">
-						<img src="~/images/avatar.png"/>
+						<img src="~/images/avatar.png" />
 					</div>
 					<div class="id">
 						Patient n°@i
@@ -38,13 +38,18 @@
 						Resume diagnosis
 					</a>
 				</div>
-				i++;
-			}
+			i++;
 		}
-	</div>
+			}
+		</div>
 
-	<input type="submit" id="next-button" value="New diagnosis"/>
+		<a href="@Url.Action("Waiting")" id="learning-button">
+			Learning ...
+		</a>
 
+		@*<input type="submit" id="next-button" value="New diagnosis" />*@
+		<a href="" id="next-button">
+			New diagnosis
+		</a>
 
-
-</form>
+	</form>
