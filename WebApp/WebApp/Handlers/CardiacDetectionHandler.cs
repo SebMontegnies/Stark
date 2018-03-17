@@ -45,6 +45,9 @@ namespace WebApp.Handlers
 									{
 										"temp", "38"
 									},
+									{
+										"arythmie","1"
+									}
 								}
 							}
 						},

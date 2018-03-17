@@ -1,6 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Globalization;
+using Bogus;
+using Microsoft.AspNetCore.Mvc;
 using WebApp.DataGenerator;
 using WebApp.Handlers;
+using WebApp.Models;
 using WebApp.ViewModels;
 
 namespace WebApp.Controllers
@@ -16,12 +19,22 @@ namespace WebApp.Controllers
 			return View();
 		}
 
-		public IActionResult GeneralInformation()
+		public IActionResult GeneralInformation(GeneralInformationViewModel model)
 		{
-			return View();
+			if (model.Temperature < 30)
+			{
+				var rand = new Faker().Random;
+				model.Gender = Gender.Male;
+				model.Temperature = rand.Int(36, 40) + rand.Decimal();
+				model.Age = rand.Int(15, 85);
+				model.BloodoOxygenationRate = rand.Int(70, 100) + rand.Decimal();
+				model.Heartbeat = rand.Int(70, 130);
+			}
+
+			return View(model);
 		}
 
-		public IActionResult Upload()
+		public IActionResult Upload(GeneralInformationViewModel model)
 		{
 			return View();
 		}

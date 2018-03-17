@@ -43,14 +43,12 @@ namespace WebApp.Controllers
 		}
 
 		// api/active
-		[Route("iotModify")]
+		[Route("active")]
 		[HttpPost]
-		public void ModifyStatus()
+		public bool Activate(bool enable)
 		{
-			if (_isEnable)
-				_isEnable = false;
-			else
-				_isEnable = true;
+			_isEnable = enable;
+			return enable;
 		}
 	}
 }
