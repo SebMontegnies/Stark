@@ -109,9 +109,9 @@ function snapshot() {
 $(function () {
 
 	$.ajax({
-		type: "GET",
+		type: "POST",
 		url: "http://diseaseit.azurewebsites.net/api/active",
-		data: {},
+		data: {enable:true},
 		success: function (activeResult) {
 			console.log(activeResult);
 		}
