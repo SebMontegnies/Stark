@@ -39,7 +39,7 @@ namespace WebApp.Controllers
 			return View(model);
 		}
 
-		public IActionResult Results(ConfirmationViewModel model)
+		
 		public IActionResult Waiting()
 		{
 			return View();
@@ -47,16 +47,15 @@ namespace WebApp.Controllers
 
 		public IActionResult Results(GeneralInformationViewModel model)
 		{
-			model.PositvePercentage = DiabetesDetectionHandler.Diabetes();
-			model.NegativePercentage = 100 - model.PositvePercentage;
 			return View(model);
 		}
 
 		public IActionResult Confirmation(ConfirmationViewModel model)
 		{
 			var viewModel = new ConfirmationViewModel();
-			viewModel.PositvePercentage = DiabetesDetectionHandler.Diabetes();
-			viewModel.NegativePercentage = 100 - viewModel.PositvePercentage;
+			viewModel.DiabeticPercentage =DiabetesDetectionHandler.Detect();
+			viewModel.BreastCancerPercentage = BreastCancerDetectionHandler.Detect();
+			viewModel.CardiacPercentage = CardiacDetectionHandler.Detect();
 			return View(viewModel);
 		}
 	}
