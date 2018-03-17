@@ -106,16 +106,24 @@
 	height: 32px;
 }
 
-#files-list {
-	padding: 50px 0 0;
-}
+#files-list {}
 
 #files-list .file {
+	padding: 10px 0 15px 100px;
+	background: url('../images/document-image.svg') no-repeat left center;
+	background-size: auto 75%;
 	border-bottom: 1px solid rgba(255, 255, 255, .4);
-	color: #6b9cae;
+	color: #fff;
 	font-size: 38px;
 	font-weight: 500;
-	line-height: 48px;
+	line-height: 42px;
+}
+
+#files-list .file .file-name {
+	color: rgba(0, 0, 0, .4);
+	font-size: 24px;
+	font-weight: 500;
+	line-height: 28px;
 }
 
 #human-body-man,
