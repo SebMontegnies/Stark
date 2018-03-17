@@ -39,6 +39,11 @@ namespace WebApp.Controllers
 			return View(model);
 		}
 
+		public IActionResult Waiting()
+		{
+			return View();
+		}
+
 		public IActionResult Results(GeneralInformationViewModel model)
 		{
 			var viewModel = new ConfirmationViewModel();

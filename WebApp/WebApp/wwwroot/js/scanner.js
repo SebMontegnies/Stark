@@ -99,6 +99,13 @@ function snapshot() {
 
 $(function () {
 
-	
+	$.ajax({
+		type: "GET",
+		url: "http://diseaseit.azurewebsites.net/api/active",
+		data: {},
+		success: function (activeResult) {
+			console.log(activeResult);
+		}
+	});
 
 });
