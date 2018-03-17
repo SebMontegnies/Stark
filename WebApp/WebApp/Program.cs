@@ -20,6 +20,7 @@ namespace WebApp
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>()
-                .Build();
+	            .UseUrls("http://localhost:8000/")
+				.Build();
     }
 }
