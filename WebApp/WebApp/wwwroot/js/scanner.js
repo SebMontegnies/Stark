@@ -10,7 +10,7 @@ function startCaptureCountdown() {
 	$('#human-capture-countdown').text(timerDefault);
 	var downloadTimer = setInterval(function () {
 		timerCounter++;
-		if (timerCounter <= timerDefault)
+		if (timerCounter < timerDefault)
 			$('#human-capture-countdown').text(timerDefault - timerCounter);
 		else {
 			clearInterval(downloadTimer);
@@ -31,15 +31,56 @@ function videoError(e) {
 	console.log(e);
 }
 
-function stopVideo() {
-	webcamStream.stop();
-}
-
 function snapshot() {
 	var canvas = document.getElementById("human-capture-canvas");
 	var ctx = canvas.getContext('2d');
 	ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-	stopVideo();
+	var imageData = canvas.toDataURL('image/jpeg');
+
+	$.ajax({
+		type: "POST",
+		url: "http://localhost:2921/api/FaceRecognition",
+		data: { data: imageData },
+		success: function (result) {
+			console.log(result);
+
+			$('#human-video-stream-container').fadeOut(250);
+			$('#human-body-light').addClass('scanning');
+
+			if (result.gender == 0) {
+				$('#human-body-man').show();
+				setTimeout(function () {
+					$('#human-informations').append('<div class="gender man">Man</div>');
+				}, 1500);
+			} else if (result.gender == 1) {
+				$('#human-body-woman').show();
+				setTimeout(function () {
+					$('#human-informations').append('<div class="gender woman">Woman</div>');
+				}, 1500);
+			}
+
+			setTimeout(function () {
+				$('#human-informations').append('<div class="age">' + result.age + ' Y</div>');
+			}, 3000);
+
+			setTimeout(function () {
+				$('#sensors-informations').append('<div class="temperature">' + result.age + ' °C</div>');
+			}, 4500);
+
+			setTimeout(function () {
+				$('#sensors-informations').append('<div class="heart-rate">' + result.age + ' BPM</div>');
+			}, 6000);
+
+			setTimeout(function () {
+				$('#sensors-informations').append('<div class="spo2">' + result.age + ' %</div>');
+			}, 7500);
+
+			setTimeout(function () {
+				$('#human-body-light').removeClass('scanning');
+			}, 9500);
+			
+		}
+	});
 }
 
 $(function () {

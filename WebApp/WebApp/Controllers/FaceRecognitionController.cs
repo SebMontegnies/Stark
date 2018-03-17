@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -16,21 +17,21 @@ namespace WebApp.Controllers
 	[Route("api/FaceRecognition")]
 	public class FaceRecognitionController : Controller
 	{
-		[HttpGet]
-		public Patient Get()
+		[HttpPost]
+		public Patient Post(string data)
 		{
-
-			return PatientGenerator.Create().FirstOrDefault();
 			try
 			{
-				throw new Exception();
-				var client = new WebClient();
-				var image = client.DownloadData("http://s1.lprs1.fr/images/2016/12/16/6464877_e1e93498-c39d-11e6-92ce-2cd01abc5747-1.jpg");
+				//string realBase = base64.Substring(base64.IndexOf(',') + 1);
+				//realBase = realBase.Trim('\0');
+				//byte[] bytes = System.Convert.FromBase64String(base64);
+				var base64Data = Regex.Match(data, @"data:image/(?<type>.+?),(?<data>.+)").Groups["data"].Value;
+				var binData = Convert.FromBase64String(base64Data);
 				var service = new FaceServiceHelper();
-				var info = service.UploadAndDetectFaces(image);
+				var info = service.UploadAndDetectFaces(binData);
 				return info;
 			}
-			catch
+			catch(Exception e)
 			{
 				return PatientGenerator.Create().FirstOrDefault();
 			}

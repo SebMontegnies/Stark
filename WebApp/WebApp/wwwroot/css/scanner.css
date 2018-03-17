@@ -1,4 +1,56 @@
-﻿#human-video-stream-container {
+﻿#logo {
+  position: absolute;
+  top: 55px;
+  left: 55px;
+  z-index: 1; }
+
+#sensors-informations {
+  position: absolute;
+  top: 55px;
+  right: 55px;
+  height: 100%;
+  width: 300px;
+  z-index: 1;
+  text-align: right; }
+
+#sensors-informations div {
+  position: absolute;
+  right: 0;
+  height: 45px;
+  color: #fff;
+  font-size: 38px;
+  font-weight: 600;
+  line-height: 45px;
+  text-transform: uppercase; }
+
+#sensors-informations div:nth-child(1) {
+  top: 0; }
+
+#sensors-informations div:nth-child(2) {
+  top: 60px; }
+
+#sensors-informations div:nth-child(3) {
+  top: 120px; }
+
+#sensors-informations div:nth-child(4) {
+  top: 180px; }
+
+#sensors-informations div.temperature {
+  padding-left: 30px;
+  background: url("../images/temperature-icon.png") no-repeat left center;
+  background-size: auto 100%; }
+
+#sensors-informations div.spo2 {
+  padding-left: 40px;
+  background: url("../images/spo2-icon.png") no-repeat left center;
+  background-size: auto 100%; }
+
+#sensors-informations div.heart-rate {
+  padding-left: 45px;
+  background: url("../images/heart-rate-icon.png") no-repeat left center;
+  background-size: auto 100%; }
+
+#human-video-stream-container {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -11,8 +63,9 @@
 
 #human-capture-canvas {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   height: 800px;
   width: 1422px;
   z-index: 3; }
@@ -87,6 +140,58 @@
   height: 800px;
   width: 700px;
   z-index: 2; }
+
+#human-informations {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+  text-align: right; }
+
+#human-informations div {
+  position: absolute;
+  right: 0;
+  height: 55px;
+  padding: 0 15px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 27.5px;
+  color: #7e82ae;
+  font-size: 25px;
+  font-weight: 600;
+  line-height: 55px;
+  text-transform: uppercase; }
+
+#human-informations div:nth-child(1) {
+  top: 0; }
+
+#human-informations div:nth-child(2) {
+  top: 62px; }
+
+#human-informations div:nth-child(3) {
+  top: 124px; }
+
+#human-informations div:nth-child(4) {
+  top: 186px; }
+
+#human-informations div.gender.man {
+  padding-left: 52px;
+  background: rgba(0, 0, 0, 0.3) url("../images/man-icon.png") no-repeat 12px center;
+  background-size: auto 60%; }
+
+#human-informations div.gender.woman {
+  padding-left: 52px;
+  background: rgba(0, 0, 0, 0.3) url("../images/woman-icon.png") no-repeat 12px center;
+  background-size: auto 60%; }
+
+#human-body-man,
+#human-body-woman {
+  display: none; }
+
+#human-body-man path,
+#human-body-woman path {
+  fill: rgba(0, 0, 0, 0.3); }
 
 @keyframes human-body-light-animation {
   0% {

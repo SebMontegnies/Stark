@@ -18,7 +18,6 @@ namespace WebApp.Helpers
 		{
 			try
 			{
-				throw new Exception();
 				Stream str = new MemoryStream(array);
 				IEnumerable<FaceAttributeType> faceAttributes =
 					new FaceAttributeType[]
