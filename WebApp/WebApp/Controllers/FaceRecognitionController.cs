@@ -19,11 +19,8 @@ namespace WebApp.Controllers
 		[HttpGet]
 		public Patient Get()
 		{
-
-			return PatientGenerator.Create().FirstOrDefault();
 			try
 			{
-				throw new Exception();
 				var client = new WebClient();
 				var image = client.DownloadData("http://s1.lprs1.fr/images/2016/12/16/6464877_e1e93498-c39d-11e6-92ce-2cd01abc5747-1.jpg");
 				var service = new FaceServiceHelper();
