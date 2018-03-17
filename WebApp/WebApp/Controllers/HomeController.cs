@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using WebApp.DataGenerator;
 using WebApp.Handlers;
+using WebApp.ViewModels;
 
 namespace WebApp.Controllers
 {
@@ -8,13 +9,20 @@ namespace WebApp.Controllers
 	{
 		public IActionResult Index()
 		{
-			var result = DiabetesDetectionHandler.Diabetes();
 			return View(PatientGenerator.Create());
 		}
 
 		public IActionResult GeneralInformation()
 		{
 			return View();
+		}
+
+		public IActionResult Confirmation()
+		{
+			var viewModel = new ConfirmationViewModel();
+			viewModel.PositvePercentage = DiabetesDetectionHandler.Diabetes();
+			viewModel.NegativePercentage = 100 - viewModel.PositvePercentage;
+			return View(viewModel);
 		}
 	}
 }
