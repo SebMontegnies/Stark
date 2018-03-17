@@ -118,3 +118,16 @@ $(function () {
 	});
 
 });
+
+function closeCapteur()
+{
+	$.ajax({
+		type: "POST",
+		url: "http://diseaseit.azurewebsites.net/api/active",
+		data: { enable: false },
+		success: function (activeResult) {
+			console.log(activeResult);
+		}
+	});
+	return true;
+}
