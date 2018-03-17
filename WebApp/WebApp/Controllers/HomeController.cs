@@ -41,7 +41,10 @@ namespace WebApp.Controllers
 
 		public IActionResult Results(GeneralInformationViewModel model)
 		{
-			return View();
+			var viewModel = new ConfirmationViewModel();
+			viewModel.PositvePercentage = DiabetesDetectionHandler.Diabetes();
+			viewModel.NegativePercentage = 100 - viewModel.PositvePercentage;
+			return View(viewModel);
 		}
 
 		public IActionResult Confirmation()
