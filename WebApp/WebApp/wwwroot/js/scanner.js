@@ -1,8 +1,10 @@
 ﻿var video = document.querySelector("#human-video-stream");
 navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia || navigator.oGetUserMedia;
 
-if (navigator.getUserMedia)
+if (navigator.getUserMedia) {
 	navigator.getUserMedia({ video: true, audio: false }, handleVideo, videoError);
+	$('#human-video-stream-container').fadeIn();
+}
 
 function startCaptureCountdown() {
 	var timerDefault = 5;
@@ -77,6 +79,7 @@ function snapshot() {
 
 			setTimeout(function () {
 				$('#human-body-light').removeClass('scanning');
+				$('#next-button').fadeIn();
 			}, 9500);
 			
 		}
