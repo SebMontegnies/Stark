@@ -40,6 +40,12 @@ namespace WebApp.Controllers
 		}
 
 		public IActionResult Results(ConfirmationViewModel model)
+		public IActionResult Waiting()
+		{
+			return View();
+		}
+
+		public IActionResult Results(GeneralInformationViewModel model)
 		{
 			return View(model);
 		}

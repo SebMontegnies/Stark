@@ -140,3 +140,22 @@
 	font-size: 0.5em;
 	text-anchor: middle;
 }
+
+#next-button {
+	position: absolute;
+	bottom: 55px;
+	right: 55px;
+	height: 70px;
+	padding: 0 30px;
+	background-color: #fff;
+	border-radius: 35px;
+	box-shadow: 0 5px 10px rgba(0, 0, 0, .15);
+	color: #8d6aae;
+	font-size: 30px;
+	font-weight: 600;
+	line-height: 70px;
+	text-decoration: none;
+	text-transform: uppercase;
+	cursor: pointer;
+	z-index: 5;
+}

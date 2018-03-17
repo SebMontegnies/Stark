@@ -26,5 +26,9 @@
   {
     "outputFile": "wwwroot/css/home.css",
     "inputFile": "wwwroot/css/home.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/waiting.css",
+    "inputFile": "wwwroot/css/waiting.scss"
   }
 ]
