@@ -12,8 +12,8 @@ $(function () {
 
 			newElement.css({ top: topOffset, left: leftOffset });
 			var oldHtml = newElement.html();
-			var avatarType = getRandomInt(1, 2) == 1 ? '~/images/avatar-girl.png' : '~/images/avatar.png';
-			var newHtml = oldHtml.replace('##3##', getRandomInt(15, 100)).replace('##4##', );
+			var avatarType = getRandomInt(1, 2) == 1 ? '/images/avatar_girl.png' : '/images/avatar.png';
+			var newHtml = oldHtml.replace('##3##', getRandomInt(15, 100)).replace('##4##', avatarType);
 			newElement.html(newHtml).appendTo('#world-map');
 			newElement.removeClass('hidden');
 		}, i*150);
