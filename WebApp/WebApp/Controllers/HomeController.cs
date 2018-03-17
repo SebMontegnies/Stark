@@ -36,10 +36,10 @@ namespace WebApp.Controllers
 
 		public IActionResult Upload(GeneralInformationViewModel model)
 		{
-			return View();
+			return View(model);
 		}
 
-		public IActionResult Confirmation()
+		public IActionResult Confirmation(GeneralInformationViewModel model)
 		{
 			var viewModel = new ConfirmationViewModel();
 			viewModel.PositvePercentage = DiabetesDetectionHandler.Diabetes();
