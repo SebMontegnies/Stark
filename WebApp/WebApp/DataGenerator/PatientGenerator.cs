@@ -12,6 +12,7 @@ namespace WebApp.DataGenerator
 				.RuleFor(p => p.Name, f => f.Person.FirstName)
 				.RuleFor(p => p.Gender, f => f.PickRandom<Gender>())
 				.RuleFor(p => p.Photo, f => f.Image.People(640, 480, true))
+				.RuleFor(p=>p.Age , f=>f.Random.Int(1,99))
 				.Generate(5);
 		}
 	}

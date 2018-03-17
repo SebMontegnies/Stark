@@ -12,7 +12,6 @@ namespace WebApp.DataGenerator
 		public static List<MedicalConsultation> Create()
 		{
 			return new Faker<MedicalConsultation>()
-				.RuleFor(m => m.Age, f => f.Random.Int(50, 80))
 				.RuleFor(m=>m.BloodOxygenationRate, f=>f.Random.Int(50,100))
 				.RuleFor(m=>m.Heartbeat,f=>f.Random.Int(70,160))
 				.RuleFor(m=>m.Temperature, f=>f.Random.Double(35,39))
