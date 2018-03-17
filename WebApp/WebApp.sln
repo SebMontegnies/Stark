@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.27130.2036
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApp", "WebApp\WebApp.csproj", "{D767690C-CA16-4441-B603-13DD7541F1FD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RaspberryCapteurs", "E:\TestRaspberry\TestRaspberry\RaspberryCapteurs.csproj", "{365649FF-7805-450E-84EA-B8C12F1ABA18}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RaspberryCapteurs", "TestRaspberry\RaspberryCapteurs.csproj", "{365649FF-7805-450E-84EA-B8C12F1ABA18}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
