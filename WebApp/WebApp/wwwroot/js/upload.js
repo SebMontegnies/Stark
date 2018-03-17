@@ -19,9 +19,9 @@ $(function () {
 	
 			 
 			$.ajax({
-				type: "GET",
+				type: "POST",
 				url: "http://localhost:2921/api/File",
-				data: { bytes: getBase64(file) },
+				data: { data: getBase64(file) },
 				success: function (result) {
 					console.log(result);
 					var documentName = '<span>' + file.name + '</span>';
