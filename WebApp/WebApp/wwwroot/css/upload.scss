@@ -106,6 +106,18 @@
 	height: 32px;
 }
 
+#files-list {
+	padding: 50px 0 0;
+}
+
+#files-list .file {
+	border-bottom: 1px solid rgba(255, 255, 255, .4);
+	color: #6b9cae;
+	font-size: 38px;
+	font-weight: 500;
+	line-height: 48px;
+}
+
 #human-body-man,
 #human-body-woman {
 	position: absolute;
