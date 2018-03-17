@@ -22,5 +22,9 @@
   {
     "outputFile": "wwwroot/css/results.css",
     "inputFile": "wwwroot/css/results.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/home.css",
+    "inputFile": "wwwroot/css/home.scss"
   }
 ]

@@ -1,19 +1,44 @@
 ﻿@model List<Patient>
-@{
-	ViewData["Title"] = "Index";
+
+@{ ViewData["Title"] = "Index"; }
+
+@section CSSHead {
+	<environment include="Development">
+		<link rel="stylesheet" href="~/css/home.css" />
+	</environment>
+	<environment exclude="Development">
+		<link rel="stylesheet" href="~/css/home.min.css" asp-append-version="true" />
+	</environment>
 }
 
+@section ScriptsHead {
 
-<div class="row">
-	@foreach (var item in Model)
-	{
-		<div class="col-md-3">
-			<a href="@Url.Action("Scanner")">
-			<p>
-				@item.Name
-			</p>
-			<img src="@item.Photo" max-width="200px" width="200px"/>
-			</a>
-		</div>
+}
+
+@section Scripts {
+	<script src="~/js/home.js" asp-append-version="true"></script>
+}
+
+<img id="logo" src="~/images/logo.png" height="122" width="404" />
+
+<div id="diagnosis-list">
+	@{
+		int i = 0;
+		foreach (var item in Model)
+		{
+			<div class="diagnosis">
+
+				<div class="picture-container">
+					<img src="@item.Photo" />
+				</div>
+				<div class="id">
+					Patient n°@i
+				</div>
+				<a href="@Url.Action("Scanner")">
+					Resume diagnosis
+				</a>
+			</div>
+			i++;
+		}
 	}
 </div>
