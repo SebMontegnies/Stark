@@ -50,6 +50,11 @@ namespace WebApp.Controllers
 			return View(model);
 		}
 
+		public IActionResult Logo(GeneralInformationViewModel model)
+		{
+			return View(model);
+		}
+
 		public IActionResult Confirmation(ConfirmationViewModel model)
 		{
 			var viewModel = new ConfirmationViewModel();

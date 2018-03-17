@@ -30,5 +30,9 @@
   {
     "outputFile": "wwwroot/css/waiting.css",
     "inputFile": "wwwroot/css/waiting.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/logo.css",
+    "inputFile": "wwwroot/css/logo.scss"
   }
 ]

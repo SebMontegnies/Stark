@@ -1,0 +1,12 @@
+﻿@section CSSHead {
+	<environment include="Development">
+		<link rel="stylesheet" href="~/css/logo.css" />
+	</environment>
+	<environment exclude="Development">
+		<link rel="stylesheet" href="~/css/logo.min.css" asp-append-version="true" />
+	</environment>
+}
+
+<a href="@Url.Action("Index")">
+	<img id="logo-big" src="~/images/logo-big.png" height="500" width="800" />
+</a>
