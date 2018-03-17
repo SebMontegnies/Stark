@@ -9,7 +9,7 @@
 	});
 
 	$.ajax({
-		type: "GET",
+		type: "POST",
 		url: "http://diseaseit.azurewebsites.net/api/active",
 		data: { enable: false },
 		success: function (activeResult) {

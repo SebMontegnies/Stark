@@ -58,3 +58,7 @@ button {
   border: none;
   font-family: 'Oswald', sans-serif; }
 
+input[type="submit"] {
+  border: none;
+  font-family: 'Oswald', sans-serif; }
+

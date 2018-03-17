@@ -20,7 +20,9 @@
 	<script src="~/js/results.js" asp-append-version="true"></script>
 }
 
-<img id="logo" src="~/images/logo.png" height="122" width="404" />
+<a href="@Url.Action("Index")">
+	<img id="logo" src="~/images/logo.png" height="122" width="404" />
+</a>
 
 <form method="get" action="@Url.Action("Confirmation")">
 

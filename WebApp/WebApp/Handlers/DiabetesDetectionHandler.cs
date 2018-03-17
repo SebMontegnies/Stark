@@ -39,7 +39,7 @@ namespace WebApp.Handlers
 				var t2 = Double.Parse(Sp.Replace(".", ","));
 				t2 = t2 * 100;
 
-				return t2.ToString();
+				return ((int)t2).ToString();
 			}
 		}
 

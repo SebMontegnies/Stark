@@ -39,7 +39,7 @@ namespace WebApp.Controllers
 			return View(model);
 		}
 
-		
+
 		public IActionResult Waiting()
 		{
 			return View();
@@ -53,7 +53,7 @@ namespace WebApp.Controllers
 		public IActionResult Confirmation(ConfirmationViewModel model)
 		{
 			var viewModel = new ConfirmationViewModel();
-			viewModel.DiabeticPercentage =DiabetesDetectionHandler.Detect();
+			viewModel.DiabeticPercentage = DiabetesDetectionHandler.Detect();
 			viewModel.BreastCancerPercentage = BreastCancerDetectionHandler.Detect();
 			viewModel.CardiacPercentage = CardiacDetectionHandler.Detect();
 			return View(viewModel);
