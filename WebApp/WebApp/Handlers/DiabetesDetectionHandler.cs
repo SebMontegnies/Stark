@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -13,7 +14,7 @@ namespace WebApp.Handlers
 {
 	public class DiabetesDetectionHandler
 	{
-		public static int Diabetes()
+		public static string Detect()
 		{
 			using (var client = new HttpClient())
 			{
@@ -33,8 +34,12 @@ namespace WebApp.Handlers
 
 				var root = JsonConvert.DeserializeObject<Rootobject>(result);
 				var values = root.Results.output1.value.Values.LastOrDefault();
-				var percentage = Double.Parse(values.LastOrDefault());
-				return (int)(percentage * 10);
+				var Sp = values.LastOrDefault();
+
+				var t2 = Double.Parse(Sp.Replace(".", ","));
+				t2 = t2 * 100;
+
+				return t2.ToString();
 			}
 		}
 

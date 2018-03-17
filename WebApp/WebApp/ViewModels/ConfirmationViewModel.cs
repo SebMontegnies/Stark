@@ -2,7 +2,11 @@
 {
 	public class ConfirmationViewModel : GeneralInformationViewModel
 	{
-		public int PositvePercentage { get; set; }
-		public int NegativePercentage { get; set; }
+		public string BreastCancerPercentage { get; set; }
+		public string Breast = "Breast cancer";
+		public string CardiacPercentage { get; set; }
+		public string Cardiac = "Cardiac disease";
+		public string DiabeticPercentage { get; set; }
+		public string Diabetic = "Diabetic";
 	}
 }

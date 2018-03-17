@@ -71,20 +71,29 @@ function snapshot() {
 				type: "GET",
 				url: "http://diseaseit.azurewebsites.net/api/health/",
 				success: function (healthResult) {
+					console.log(healthResult);
+					gg = healthResult;
 					setTimeout(function () {
-						$('#sensors-informations').append('<div class="temperature">' + healthResult.temperature + ' °C</div>');
+						var temp = parseFloat(healthResult.temperature).toFixed(2);
+						$('#sensors-informations').append('<div class="temperature">' + temp + ' °C</div>');
+
+						$('input[name="temperature"]').val(temp);
 					}, 1500);
-					$('input[name="temperature"]').val(healthResult.temperature);
+			
 
 					setTimeout(function () {
 						$('#sensors-informations').append('<div class="heart-rate">' + healthResult.hearbeat + ' BPM</div>');
+						$('input[name="hearbeat"]').val(healthResult.hearbeat);
 					}, 3000);
-					$('input[name="hearbeat"]').val(healthResult.hearbeat);
+			
 
 					setTimeout(function () {
-						$('#sensors-informations').append('<div class="spo2">' + healthResult.bloodoxygenationRate + ' %</div>');
+						var bloodOx = parseFloat(healthResult.bloodoxygenationRate).toFixed(2);
+						$('#sensors-informations').append('<div class="spo2">' + bloodOx + ' %</div>');
+						$('input[name="bloodoxygenationRate"]').val(bloodOx);
 					}, 4500);
-					$('input[name="bloodoxygenationRate"]').val(healthResult.bloodoxygenationRate);
+				
+				
 				}
 			});
 
