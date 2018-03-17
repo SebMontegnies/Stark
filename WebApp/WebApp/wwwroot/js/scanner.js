@@ -65,17 +65,24 @@ function snapshot() {
 				$('#human-informations').append('<div class="age">' + result.age + ' Y</div>');
 			}, 3000);
 
-			setTimeout(function () {
-				$('#sensors-informations').append('<div class="temperature">' + result.age + ' °C</div>');
-			}, 4500);
+			$.ajax({
+				type: "GET",
+				url: "http://diseaseit.azurewebsites.net/api/health/",
+				success: function (healthResult) {
+					console.log(healthResult);
+					setTimeout(function () {
+						$('#sensors-informations').append('<div class="temperature">' + healthResult.temperature + ' °C</div>');
+					}, 1500);
 
-			setTimeout(function () {
-				$('#sensors-informations').append('<div class="heart-rate">' + result.age + ' BPM</div>');
-			}, 6000);
+					setTimeout(function () {
+						$('#sensors-informations').append('<div class="heart-rate">' + healthResult.hearbeat + ' BPM</div>');
+					}, 3000);
 
-			setTimeout(function () {
-				$('#sensors-informations').append('<div class="spo2">' + result.age + ' %</div>');
-			}, 7500);
+					setTimeout(function () {
+						$('#sensors-informations').append('<div class="spo2">' + healthResult.bloodoxygenationRate + ' %</div>');
+					}, 4500);
+				}
+			});
 
 			setTimeout(function () {
 				$('#human-body-light').removeClass('scanning');

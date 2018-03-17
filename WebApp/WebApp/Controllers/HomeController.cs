@@ -12,7 +12,17 @@ namespace WebApp.Controllers
 			return View(PatientGenerator.Create());
 		}
 
+		public IActionResult Scanner()
+		{
+			return View();
+		}
+
 		public IActionResult GeneralInformation()
+		{
+			return View();
+		}
+
+		public IActionResult Upload()
 		{
 			return View();
 		}
