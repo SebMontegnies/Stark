@@ -14,5 +14,13 @@
   {
     "outputFile": "wwwroot/css/upload.css",
     "inputFile": "wwwroot/css/upload.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/confirmation.css",
+    "inputFile": "wwwroot/css/confirmation.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/results.css",
+    "inputFile": "wwwroot/css/results.scss"
   }
 ]

@@ -1,14 +1,14 @@
 ﻿@using WebApp.ViewModels
 @model WebApp.ViewModels.ConfirmationViewModel
 
-@{ ViewData["Title"] = "Confirmation"; }
+@{ ViewData["Title"] = "Results"; }
 
 @section CSSHead {
 	<environment include="Development">
-		<link rel="stylesheet" href="~/css/confirmation.css" />
+		<link rel="stylesheet" href="~/css/results.css" />
 	</environment>
 	<environment exclude="Development">
-		<link rel="stylesheet" href="~/css/confirmation.min.css" asp-append-version="true" />
+		<link rel="stylesheet" href="~/css/results.min.css" asp-append-version="true" />
 	</environment>
 }
 
@@ -17,7 +17,7 @@
 }
 
 @section Scripts {
-	<script src="~/js/confirmation.js" asp-append-version="true"></script>
+	<script src="~/js/results.js" asp-append-version="true"></script>
 }
 
 <img id="logo" src="~/images/logo.png" height="122" width="404" />
@@ -58,11 +58,6 @@
 			<div class="chart-label">
 				Nom de la maladie
 			</div>
-			<span class="toggle" data-field="disease1">
-				<span class="green" data-value="1">Agree</span>
-				<span class="selected red" data-value="0">Disagree</span>
-			</span>
-			<input type="hidden" name="disease1" value="0" />
 		</div>
 
 		<div class="proposal">
@@ -81,11 +76,6 @@
 			<div class="chart-label">
 				Nom de la maladie
 			</div>
-			<span class="toggle" data-field="disease2">
-				<span class="green" data-value="1">Agree</span>
-				<span class="selected red" data-value="0">Disagree</span>
-			</span>
-			<input type="hidden" name="disease2" value="0" />
 		</div>
 
 		<div class="proposal">
@@ -104,15 +94,10 @@
 			<div class="chart-label">
 				Nom de la maladie
 			</div>
-			<span class="toggle" data-field="disease3">
-				<span class="green" data-value="1">Agree</span>
-				<span class="selected red" data-value="0">Disagree</span>
-			</span>
-			<input type="hidden" name="disease3" value="0" />
 		</div>
 
 	</section>
 	<button type="submit" id="next-button">
-		Confirm diagnosis
+		Save the diagnosis
 	</button>
 </form>

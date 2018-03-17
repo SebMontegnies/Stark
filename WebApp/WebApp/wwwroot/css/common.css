@@ -54,3 +54,6 @@ body {
   font-family: 'Oswald', sans-serif;
   overflow: hidden; }
 
+button {
+  border: none; }
+
