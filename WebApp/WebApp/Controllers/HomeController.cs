@@ -26,6 +26,11 @@ namespace WebApp.Controllers
 			return View();
 		}
 
+		public IActionResult Results()
+		{
+			return View();
+		}
+
 		public IActionResult Confirmation()
 		{
 			var viewModel = new ConfirmationViewModel();

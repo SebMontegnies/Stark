@@ -1,0 +1,127 @@
+﻿#logo {
+  position: absolute;
+  top: 55px;
+  left: 55px;
+  z-index: 1; }
+
+#human-body-man,
+#human-body-woman {
+  position: absolute;
+  top: 50%;
+  right: 55px;
+  transform: translateY(-50%);
+  height: 700px; }
+
+#human-body-man path,
+#human-body-woman path {
+  fill: rgba(0, 0, 0, 0.3); }
+
+#next-button {
+  position: absolute;
+  bottom: 55px;
+  right: 55px;
+  height: 70px;
+  padding: 0 30px;
+  background-color: #fff;
+  border-radius: 35px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+  color: #8d6aae;
+  font-size: 30px;
+  font-weight: 600;
+  line-height: 70px;
+  text-decoration: none;
+  text-transform: uppercase;
+  cursor: pointer;
+  z-index: 5; }
+
+#proposals {
+  position: absolute;
+  top: 50%;
+  left: 135px;
+  transform: translateY(-50%);
+  height: 500px;
+  width: 55%; }
+
+.proposal:after {
+  content: '';
+  display: block;
+  clear: both; }
+
+.circular-chart {
+  display: block;
+  float: left;
+  height: 160px;
+  width: 160px;
+  margin: 20px 30px 30px 0; }
+
+.chart-label {
+  display: inline-block;
+  float: left;
+  color: #fff;
+  font-size: 38px;
+  line-height: 190px; }
+
+#proposals .proposal .toggle {
+  display: block;
+  float: right;
+  height: 46px;
+  width: 300px;
+  margin: 75px 0 0;
+  background: rgba(0, 0, 0, 0.15);
+  border: 2px solid #fff;
+  border-radius: 2px; }
+
+#proposals .proposal .toggle span {
+  display: block;
+  float: right;
+  height: 46px;
+  width: 150px;
+  background: rgba(0, 0, 0, 0.05);
+  color: #fff;
+  font-size: 25px;
+  letter-spacing: 1px;
+  line-height: 46px;
+  text-align: center;
+  text-transform: uppercase;
+  cursor: pointer; }
+
+#proposals .proposal .toggle span.selected {
+  background: #fff;
+  color: #837aae; }
+
+#proposals .proposal .toggle span.red.selected {
+  color: #871a27; }
+
+#proposals .proposal .toggle span.green.selected {
+  color: #39871a; }
+
+.circle-bg {
+  fill: none;
+  stroke: #eee;
+  stroke-width: 3.8; }
+
+.circle {
+  fill: none;
+  stroke-width: 2.8;
+  stroke-linecap: round;
+  animation: progress 1s ease-out forwards; }
+
+@keyframes progress {
+  0% {
+    stroke-dasharray: 0 100; } }
+
+.circular-chart.orange .circle {
+  stroke: #8f67ae; }
+
+.circular-chart.green .circle {
+  stroke: #6dbaba; }
+
+.circular-chart.blue .circle {
+  stroke: #67a3ae; }
+
+.percentage {
+  fill: #fff;
+  font-family: sans-serif;
+  font-size: 0.5em;
+  text-anchor: middle; }
+
