@@ -15,6 +15,25 @@
 	<script src="~/js/scanner.js" asp-append-version="true"></script>
 }
 
-<section id="human-body" class="scanning">
+<section id="human-body">
 	<span id="human-body-light"></span>
+</section>
+
+<svg class="clip-svg">
+	<defs>
+		<clipPath id="polygon-clip-triangle-equilateral" clipPathUnits="objectBoundingBox">
+			<polygon points="0 0.87, 0.5 0, 0.5 0, 1 0.87" />
+		</clipPath>
+	</defs>
+</svg>
+
+<section id="human-video-stream-container">
+	<video autoplay="autoplay" id="human-video-stream"></video>
+	<div id="human-video-stream-loader">
+		<div class="bounce1"></div>
+		<div class="bounce2"></div>
+		<div class="bounce3"></div>
+	</div>
+	<div id="human-capture-countdown"></div>
+	<canvas id="human-capture-canvas" width="1422" height="800"></canvas>
 </section>
