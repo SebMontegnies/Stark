@@ -8,6 +8,7 @@ namespace WebApp.ViewModels
 {
 	public class GeneralInformationViewModel
 	{
+		public int Id { get; set; }
 		public Gender Gender { get; set; }
 		public int Age { get; set; }
 		public bool HasChildren { get; set; }

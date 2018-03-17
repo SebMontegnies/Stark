@@ -14,9 +14,9 @@ namespace WebApp.Controllers
 		{
 			return View(PatientGenerator.Create());
 		}
-		public IActionResult Scanner()
+		public IActionResult Scanner(int id)
 		{
-			return View();
+			return View(id);
 		}
 
 		public IActionResult GeneralInformation(GeneralInformationViewModel model)
