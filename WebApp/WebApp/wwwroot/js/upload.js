@@ -1,12 +1,15 @@
-﻿$(function () {
+﻿function getBase64(file) {
+	var reader = new FileReader();
+	reader.readAsDataURL(file);
+	reader.onload = function () {
+		return reader.result;
+	};
+	reader.onerror = function (error) {
+		console.log('Error: ', error);
+	};
+}
 
-	$('.toggle').each(function () {
-		$(this).children('span').click(function () {
-			$(this).parent().children('span').removeClass('selected');
-			$(this).addClass('selected');
-			$('input[name="' + $(this).parent().data('field') + '"]').val($(this).data('value'));
-		});
-	});
+$(function () {
 
 	$('#file').change(function () {
 		$('#file-name').text($('#file')[0].files[0].name);
@@ -14,28 +17,19 @@
 		if (file !== null) {
 			$('#file-loader').css({ 'display': 'inline-block' });
 	
-			var reader = new FileReader();
-			reader.onload = function () {
-				$.ajax({
-					url: '/attachmentURL',
-					type: 'POST',
-					data: reader.result
-				});
-			}
-			console.log(reader.readAsBinaryString(file));
-			//$.ajax({
-			//	type: "POST",
-			//	url: "http://localhost:2921/api/FaceRecognition",
-			//	data: { data: data },
-			//	success: function (result) {
-
-			var documentName = '<span>' + file.name + '</span>';
-			var symptomResult = 'Souffle au coeur';
-			var symptom = '<span>' + symptomResult + '</span>'; //result.symptom
-			$('#files-list').append('<div class="file">' + documentName + symptom + '</div>');
-
-			//	}
-			//});
+			 
+			$.ajax({
+				type: "GET",
+				url: "http://localhost:2921/api/File",
+				data: { bytes: getBase64(file) },
+				success: function (result) {
+					console.log(result);
+					var documentName = '<span>' + file.name + '</span>';
+					var symptomResult = 'Souffle au coeur';
+					var symptom = '<span>' + symptomResult + '</span>'; //result.symptom
+					$('#files-list').append('<div class="file">' + symptom + '<br /><span class="file-name">' + documentName + '</span></div>');
+				}
+			});
 		}
 	});
 
