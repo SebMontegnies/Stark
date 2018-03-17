@@ -11,7 +11,6 @@ namespace WebApp.Controllers
 		{
 			return View(PatientGenerator.Create());
 		}
-
 		public IActionResult Scanner()
 		{
 			return View();
