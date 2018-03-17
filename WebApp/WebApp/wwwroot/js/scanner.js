@@ -41,7 +41,7 @@ function snapshot() {
 
 	$.ajax({
 		type: "POST",
-		url: "http://localhost:2921/api/FaceRecognition",
+		url: "http://localhost:8000/api/FaceRecognition",
 		data: { data: imageData },
 		success: function (result) {
 

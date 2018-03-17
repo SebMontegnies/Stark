@@ -20,12 +20,12 @@ $(function () {
 			 
 			$.ajax({
 				type: "POST",
-				url: "http://localhost:2921/api/File",
+				url: "http://localhost:8000/api/File",
 				data: { data: getBase64(file) },
 				success: function (result) {
 					console.log(result);
 					var documentName = '<span>' + file.name + '</span>';
-					var symptomResult = 'Souffle au coeur';
+					var symptomResult = result;
 					var symptom = '<span>' + symptomResult + '</span>'; //result.symptom
 					$('#files-list').append('<div class="file">' + symptom + '<br /><span class="file-name">' + documentName + '</span></div>');
 				}
