@@ -10,32 +10,16 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace WebApp.Controllers
 {
-    [Produces("application/json")]
-    [Route("api")]
-    public class DataCollectorController : Controller
-    {
-		// api/temperature/
-		[Route("temperature")]
-        [HttpPost]
-        public HttpResponseMessage Temperature(double value)
+	[Produces("application/json")]
+	[Route("api")]
+	public class DataCollectorController : Controller
+	{
+		// api/health/
+		[Route("health")]
+		[HttpPost]
+		public string Health(double temperature, double heartbeat, double bloodoxygenation)
 		{
-			return new HttpResponseMessage(HttpStatusCode.OK);
+			return temperature + " " + heartbeat + " " + bloodoxygenation;
 		}
-
-		// api/Heartbeat/
-		[Route("heartbeat")]
-	    [HttpPost]
-	    public HttpResponseMessage Heartbeat(double value)
-	    {
-		    return new HttpResponseMessage(HttpStatusCode.OK);
-	    }
-
-	    // api/bloodoxgyneation
-	    [Route("bloodoxygenation")]
-	    [HttpPost]
-	    public HttpResponseMessage BloodOxygenation(double value)
-	    {
-		    return new HttpResponseMessage(HttpStatusCode.OK);
-	    }
-    }
+	}
 }
