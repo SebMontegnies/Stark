@@ -1,4 +1,5 @@
-﻿@section CSSHead {
+﻿@model int
+@section CSSHead {
 	<environment include="Development">
 		<link rel="stylesheet" href="~/css/scanner.css" />
 	</environment>
@@ -58,7 +59,8 @@
 		<div id="human-capture-countdown"></div>
 		<canvas id="human-capture-canvas" width="1422" height="800" data-send-ajax-url="http://localhost:2921/api/FaceRecognition"></canvas>
 	</section>
-
+	
+	<input type="hidden" name="Id" value="@Model" />
 	<input type="hidden" name="age" />
 	<input type="hidden" name="gender" />
 	@*<input type="hidden" name="size" />
@@ -66,6 +68,7 @@
 	<input type="hidden" name="temperature" />
 	<input type="hidden" name="hearbeat" />
 	<input type="hidden" name="bloodoxygenationRate" />
+
 
 	<button type="submit" id="next-button" onclick="return closeCapteur();">
 		Next
