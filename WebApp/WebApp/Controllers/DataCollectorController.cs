@@ -39,12 +39,7 @@ namespace WebApp.Controllers
 		[HttpGet]
 		public bool Activate()
 		{
-			if (_isEnable)
-				_isEnable = false;
-			else
-				_isEnable = true;
-
-			return _isEnable;
+			return true;
 		}
 	}
 }
