@@ -39,7 +39,7 @@ namespace WebApp.Controllers
 			return View(model);
 		}
 
-		public IActionResult Results(ConfirmationViewModel model)
+		
 		public IActionResult Waiting()
 		{
 			return View();
