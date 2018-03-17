@@ -44,7 +44,6 @@ function snapshot() {
 		url: "http://localhost:2921/api/FaceRecognition",
 		data: { data: imageData },
 		success: function (result) {
-			console.log(result);
 
 			$('#human-video-stream-container').fadeOut(250);
 			$('#human-body-light').addClass('scanning');
@@ -54,33 +53,38 @@ function snapshot() {
 				setTimeout(function () {
 					$('#human-informations').append('<div class="gender man">Man</div>');
 				}, 1500);
+				$('input[name="gender"]').val('0');
 			} else if (result.gender == 1) {
 				$('#human-body-woman').show();
 				setTimeout(function () {
 					$('#human-informations').append('<div class="gender woman">Woman</div>');
 				}, 1500);
+				$('input[name="gender"]').val('1');
 			}
 
 			setTimeout(function () {
 				$('#human-informations').append('<div class="age">' + result.age + ' Y</div>');
 			}, 3000);
+			$('input[name="age"]').val(result.age);
 
 			$.ajax({
 				type: "GET",
 				url: "http://diseaseit.azurewebsites.net/api/health/",
 				success: function (healthResult) {
-					console.log(healthResult);
 					setTimeout(function () {
 						$('#sensors-informations').append('<div class="temperature">' + healthResult.temperature + ' °C</div>');
 					}, 1500);
+					$('input[name="temperature"]').val(healthResult.temperature);
 
 					setTimeout(function () {
 						$('#sensors-informations').append('<div class="heart-rate">' + healthResult.hearbeat + ' BPM</div>');
 					}, 3000);
+					$('input[name="hearbeat"]').val(healthResult.hearbeat);
 
 					setTimeout(function () {
 						$('#sensors-informations').append('<div class="spo2">' + healthResult.bloodoxygenationRate + ' %</div>');
 					}, 4500);
+					$('input[name="bloodoxygenationRate"]').val(healthResult.bloodoxygenationRate);
 				}
 			});
 

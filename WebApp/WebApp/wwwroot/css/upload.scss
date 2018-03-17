@@ -19,45 +19,103 @@
 	border-bottom: 1px solid rgba(255, 255, 255, .4);
 }
 
-#questions .question label {
-	color: #fff;
+#questions .question .label-file {
+	height: 60px;
+	padding: 0 30px;
+	background-color: #fff;
+	border-radius: 30px;
+	color: #6b9cae;
 	font-size: 38px;
 	font-weight: 500;
 	line-height: 48px;
-}
-
-#questions .question:last-child {
-	border-bottom: none;
-}
-
-#questions .question .toggle {
-	display: block;
-	float: right;
-	height: 46px;
-	width: 180px;
-	background: rgba(0, 0, 0, .15);
-	border: 2px solid #fff;
-	border-radius: 2px;
-}
-
-#questions .question .toggle span {
-	display: block;
-	float: right;
-	height: 46px;
-	width: 90px;
-	background: rgba(0, 0, 0, .05);
-	color: #fff;
-	font-size: 25px;
-	letter-spacing: 1px;
-	line-height: 46px;
-	text-align: center;
-	text-transform: uppercase;
 	cursor: pointer;
 }
 
-#questions .question .toggle span.selected {
-	background: #fff;
-	color: #837aae;
+#questions .question .label-file:hover {
+	color: #8772ae;
+}
+
+#questions .question .input-file {
+	display: none;
+}
+
+#questions .question #file-name {
+	padding-left: 25px;
+	color: rgba(255, 255, 255, .5);
+	font-size: 38px;
+	font-weight: 500;
+	line-height: 48px;
+	cursor: pointer;
+}
+
+/* File loader */
+@-moz-keyframes file-loader {
+	0% {
+		-moz-transform: rotate(0deg);
+		transform: rotate(0deg);
+	}
+
+	100% {
+		-moz-transform: rotate(360deg);
+		transform: rotate(360deg);
+	}
+}
+
+@-webkit-keyframes file-loader {
+	0% {
+		-webkit-transform: rotate(0deg);
+		transform: rotate(0deg);
+	}
+
+	100% {
+		-webkit-transform: rotate(360deg);
+		transform: rotate(360deg);
+	}
+}
+
+@keyframes file-loader {
+	0% {
+		-moz-transform: rotate(0deg);
+		-ms-transform: rotate(0deg);
+		-webkit-transform: rotate(0deg);
+		transform: rotate(0deg);
+	}
+
+	100% {
+		-moz-transform: rotate(360deg);
+		-ms-transform: rotate(360deg);
+		-webkit-transform: rotate(360deg);
+		transform: rotate(360deg);
+	}
+}
+
+#file-loader {
+	-moz-animation: file-loader 1250ms infinite linear;
+	-webkit-animation: file-loader 1250ms infinite linear;
+	animation: file-loader 1250ms infinite linear;
+	border: 8px solid #fff;
+	border-right-color: transparent;
+	border-radius: 16px;
+	box-sizing: border-box;
+	display: none;
+	position: relative;
+	margin-left: 15px;
+	overflow: hidden;
+	text-indent: -9999px;
+	width: 32px;
+	height: 32px;
+}
+
+#files-list {
+	padding: 50px 0 0;
+}
+
+#files-list .file {
+	border-bottom: 1px solid rgba(255, 255, 255, .4);
+	color: #6b9cae;
+	font-size: 38px;
+	font-weight: 500;
+	line-height: 48px;
 }
 
 #human-body-man,
