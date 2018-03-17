@@ -30,33 +30,11 @@ namespace WebApp.Controllers
 		{
 			var model = new DataViewModel();
 
-			if (_isEnable)
-			{
-				model.BloodoxygenationRate = _bloodoxygenationRate;
-				model.Hearbeat = _hearbeat;
-				model.Temperature = _temperature;
-			}
-			else
-			{
-				var rnd = new Faker().Random;
-
-				if (_bloodoxygenationRate == 0)
-					model.BloodoxygenationRate = _bloodoxygenationRate;
-				else
-					model.BloodoxygenationRate = rnd.Int(90, 99) + rnd.Double();
+			model.BloodoxygenationRate = _bloodoxygenationRate;
+			model.Hearbeat = _hearbeat;
+			model.Temperature = _temperature;
 
 
-				if (_hearbeat == 0)
-					model.Hearbeat = _hearbeat;
-				else
-					model.Hearbeat = rnd.Int(70, 130);
-
-				if (_temperature == 0)
-					model.Temperature = _temperature;
-				else
-					model.Temperature = rnd.Int(35, 40) + rnd.Double();
-
-			}
 			return model;
 
 		}
